@@ -16,4 +16,35 @@
     <string name="air_status">空氣狀態：</string>
     <string name="air_time">監測時間：</string>
 
+    <!-- Air Dialog -->
+    <string name="air_dialog_confirm">OK</string>
+    <string name="air_dialog_location">觀測站位置：</string>
+    <string name="air_dialog_pollutant">污染指標物：</string>
+    <string name="air_dialog_aqi">AQI 指數：</string>
+    <string name="air_dialog_influence">影響：</string>
+    <string name="air_dialog_suggestion">建議：</string>
+
+    <!-- AQI influences -->
+    <string name="aqi_influence_good">空氣品質為良好，污染程度低或無污染。</string>
+    <string name="aqi_influence_normal">空氣品質普通；但對非常少數之極敏感族群產生輕微影響。</string>
+    <string name="aqi_influence_maybe_bad">空氣污染物可能會對敏感族群的健康造成影響，但是對一般大眾的影響不明顯。</string>
+    <string name="aqi_influence_bad">對所有人的健康開始產生影響，對於敏感族群可能產生較嚴重的健康影響。</string>
+    <string name="aqi_influence_very_bad">健康警報：所有人都可能產生較嚴重的健康影響。</string>
+    <string name="aqi_influence_danger">健康威脅達到緊急，所有人都可能受到影響。</string>
+
+    <!-- AQI general suggestions -->
+    <string name="aqi_general_suggestion_good">正常戶外活動。	</string>
+    <string name="aqi_general_suggestion_normal">正常戶外活動。</string>
+    <string name="aqi_general_suggestion_maybe_bad">1.一般民眾如果有不適，如眼痛，咳嗽或喉嚨痛等，應該考慮減少戶外活動。\n2.學生仍可進行戶外活動，但建議減少長時間劇烈運動。</string>
+    <string name="aqi_general_suggestion_bad">1.一般民眾如果有不適，如眼痛，咳嗽或喉嚨痛等，應減少體力消耗，特別是減少戶外活動。\n2.學生應避免長時間劇烈運動，進行其他戶外活動時應增加休息時間。</string>
+    <string name="aqi_general_suggestion_very_bad">1.一般民眾應減少戶外活動。\n2.學生應立即停止戶外活動，並將課程調整於室內進行。</string>
+    <string name="aqi_general_suggestion_danger">1.一般民眾應避免戶外活動，室內應緊閉門窗，必要外出應配戴口罩等防護用具。\n2.學生應立即停止戶外活動，並將課程調整於室內進行。</string>
+
+    <!-- AQI sensitive suggestions -->
+    <string name="aqi_sensitive_suggestion_good">正常戶外活動。	</string>
+    <string name="aqi_sensitive_suggestion_normal">極特殊敏感族群建議注意可能產生的咳嗽或呼吸急促症狀，但仍可正常戶外活動。</string>
+    <string name="aqi_sensitive_suggestion_maybe_bad">1.有心臟、呼吸道及心血管疾病患者、孩童及老年人，建議減少體力消耗活動及戶外活動，必要外出應配戴口罩。\n2.具有氣喘的人可能需增加使用吸入劑的頻率。</string>
+    <string name="aqi_sensitive_suggestion_bad">1.有心臟、呼吸道及心血管疾病患者、孩童及老年人，建議留在室內並減少體力消耗活動，必要外出應配戴口罩。\n2.具有氣喘的人可能需增加使用吸入劑的頻率。</string>
+    <string name="aqi_sensitive_suggestion_very_bad">1.有心臟、呼吸道及心血管疾病患者、孩童及老年人應留在室內並減少體力消耗活動，必要外出應配戴口罩。\n2.具有氣喘的人應增加使用吸入劑的頻率。</string>
+    <string name="aqi_sensitive_suggestion_danger">1.有心臟、呼吸道及心血管疾病患者、孩童及老年人應留在室內並避免體力消耗活動，必要外出應配戴口罩。\n2.具有氣喘的人應增加使用吸入劑的頻率。</string>
 </resources>

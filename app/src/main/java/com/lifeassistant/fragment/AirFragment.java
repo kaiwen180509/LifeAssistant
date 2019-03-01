@@ -11,6 +11,7 @@ import com.lifeassistant.base.BasePresenter;
 import com.lifeassistant.presenter.AirPresenter;
 import com.lifeassistant.view.AirView;
 
+import butterknife.BindString;
 import butterknife.BindView;
 
 public class AirFragment extends BaseFragment implements AirView {
@@ -18,6 +19,8 @@ public class AirFragment extends BaseFragment implements AirView {
 
     @BindView(R.id.air_recycler)
     RecyclerView recyclerView;
+    @BindString(R.string.air_dialog_confirm)
+    String confirm;
 
     @Override
     protected BasePresenter getPresenter() {

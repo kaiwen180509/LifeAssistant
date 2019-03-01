@@ -22,6 +22,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
+    private final static int COLOR_LEVEL_GOOD = 1;
+    private final static int COLOR_LEVEL_NORMAL = 2;
+    private final static int COLOR_LEVEL_MAYBE_BAD = 3;
+    private final static int COLOR_LEVEL_BAD = 4;
+    private final static int COLOR_LEVEL_VERY_BAD = 5;
+    private final static int COLOR_LEVEL_DANGER = 6;
+
     // API 取得的 AQI 資料
     private ArrayList<AQIBean> list;
 
@@ -51,7 +58,8 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
         String time = list.get(i).getPublishTime().replace("-", "/");
 
         // 設定 AQI 指標級別的顏色
-        int color = checkPM25Level(viewHolder, Integer.parseInt(index));
+        int level = checkAQILevel(Integer.parseInt(index));
+        int color = getColorByLevel(viewHolder, level);
         Drawable wrappedDrawable = DrawableCompat.wrap(viewHolder.drawable);
         DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
         viewHolder.aqiTextView.setBackground(viewHolder.drawable);
@@ -65,7 +73,7 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickEvent.clickItem(i);
+                clickEvent.clickItem(i, level, color);
             }
         });
     }
@@ -78,20 +86,41 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
     /**
      * 判斷 AQI 的指標等級
      *
+     * @param index AQI 指標
+     * @return AQI 指標等級
+     */
+    private int checkAQILevel(int index) {
+        if (index < 51) {
+            return COLOR_LEVEL_GOOD;
+        } else if (index < 101) {
+            return COLOR_LEVEL_NORMAL;
+        } else if (index < 151) {
+            return COLOR_LEVEL_MAYBE_BAD;
+        } else if (index < 201) {
+            return COLOR_LEVEL_BAD;
+        } else if (index < 301) {
+            return COLOR_LEVEL_VERY_BAD;
+        }
+        return COLOR_LEVEL_DANGER;
+    }
+
+    /**
+     * 判斷等級的顏色
+     *
      * @param viewHolder ItemView
-     * @param index      AQI 指標
+     * @param level      AQI 指標等級
      * @return res/color 的顏色
      */
-    private int checkPM25Level(ViewHolder viewHolder, int index) {
-        if (index < 51) {
+    private int getColorByLevel(ViewHolder viewHolder, int level) {
+        if (level == COLOR_LEVEL_GOOD) {
             return viewHolder.colorGood;
-        } else if (index < 101) {
+        } else if (level == COLOR_LEVEL_NORMAL) {
             return viewHolder.colorNormal;
-        } else if (index < 151) {
+        } else if (level == COLOR_LEVEL_MAYBE_BAD) {
             return viewHolder.colorMaybeBad;
-        } else if (index < 201) {
+        } else if (level == COLOR_LEVEL_BAD) {
             return viewHolder.colorBad;
-        } else if (index < 301) {
+        } else if (level == COLOR_LEVEL_VERY_BAD) {
             return viewHolder.colorVeryBad;
         }
         return viewHolder.colorDanger;
@@ -99,7 +128,7 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
 
     public interface ClickEvent {
         // Item 的點擊事件
-        void clickItem(int position);
+        void clickItem(int position, int level, int color);
     }
 
     // 建立 ViewHolder

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/air_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:text="狀態"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/air_dialog_location_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/air_dialog_location"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_title" />
+
+    <TextView
+        android:id="@+id/air_dialog_location_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/air_dialog_location_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/air_dialog_location_title" />
+
+    <TextView
+        android:id="@+id/air_dialog_pollutant_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_dialog_pollutant"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/air_dialog_location_title"
+        app:layout_constraintTop_toTopOf="@+id/air_dialog_pollutant_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_pollutant_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/air_dialog_location_text"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_location_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_aqi_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/air_dialog_pollutant_text"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_pollutant_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_aqi_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_dialog_aqi"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/air_dialog_pollutant_title"
+        app:layout_constraintTop_toTopOf="@+id/air_dialog_aqi_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_influence_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/air_dialog_aqi_text"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_aqi_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_influence_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_dialog_influence"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/air_dialog_aqi_title"
+        app:layout_constraintTop_toTopOf="@+id/air_dialog_influence_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_suggestion_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="TextView"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/air_dialog_influence_text"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_influence_text" />
+
+    <TextView
+        android:id="@+id/air_dialog_suggestion_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/air_dialog_suggestion"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/air_dialog_influence_title"
+        app:layout_constraintTop_toTopOf="@+id/air_dialog_suggestion_text" />
+
+    <Button
+        android:id="@+id/air_dialog_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:background="#00000000"
+        android:text="@string/air_dialog_confirm"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/air_dialog_suggestion_text" />
+</android.support.constraint.ConstraintLayout>

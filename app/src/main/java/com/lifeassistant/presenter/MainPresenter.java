@@ -114,11 +114,6 @@ public class MainPresenter extends BasePresenter<MainView> {
             public void onAQIDataPrepared(String response) {
                 LifeSharePreference preference = new LifeSharePreference(context);
                 preference.saveAQIData(response);
-                Gson gson = new Gson();
-                Type typeToken = new TypeToken<ArrayList<AQIBean>>() {
-                }.getType();
-                ArrayList<AQIBean> list = gson.fromJson(response, typeToken);
-                Log.e("getAQIData", "list.getSiteName->" + list.get(0).getSiteName());
             }
 
             @Override

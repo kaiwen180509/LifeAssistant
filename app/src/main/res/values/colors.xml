@@ -4,9 +4,14 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <!-- PM25 Level Color -->
-    <color name="colorLevelLow">#9cff9c</color>
-    <color name="colorLevelNormal">#ffcf00</color>
-    <color name="colorLevelHigh">#ff6464</color>
-    <color name="colorLevelBoom">#ce30ff</color>
+    <!-- Common -->
+    <color name="colorBlack">#000000</color>
+
+    <!-- AQI Level Color -->
+    <color name="colorLevelGood">#9ccc65</color>
+    <color name="colorLevelNormal">#ffee58</color>
+    <color name="colorLevelMaybeBad">#ffa726</color>
+    <color name="colorLevelBad">#ef5350</color>
+    <color name="colorLevelVeryBad">#ab47bc</color>
+    <color name="colorLevelDanger">#7f0000</color>
 </resources>

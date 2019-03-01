@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- PM25 Level Color -->
+    <color name="colorLevelLow">#9cff9c</color>
+    <color name="colorLevelNormal">#ffcf00</color>
+    <color name="colorLevelHigh">#ff6464</color>
+    <color name="colorLevelBoom">#ce30ff</color>
+</resources>

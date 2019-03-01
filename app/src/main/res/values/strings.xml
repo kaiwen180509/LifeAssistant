@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">LifeAssistant</string>
+    <string name="drawer_open">開啟</string>
+    <string name="drawer_close">關閉</string>
+    <string name="open_gov_data">政府資料開放平臺</string>
+
+    <!-- drawer -->
+    <string name="drawer_home">首頁</string>
+    <string name="drawer_weather">天氣預報</string>
+    <string name="drawer_air">空氣品質</string>
+    <string name="drawer_setting">設定</string>
+
+    <!-- list_item_air -->
+    <string name="air_country">縣市位置：</string>
+    <string name="air_site">監測位置：</string>
+    <string name="air_status">空氣狀態：</string>
+    <string name="air_time">監測時間：</string>
+
+</resources>

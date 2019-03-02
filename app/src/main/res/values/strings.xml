@@ -10,6 +10,13 @@
     <string name="drawer_air">空氣品質</string>
     <string name="drawer_setting">設定</string>
 
+    <!-- Weather item -->
+    <string name="weather_item_temp">溫度：</string>
+    <string name="weather_item_rain">降雨：</string>
+    <string name="weather_item_description">描述：</string>
+    <string name="weather_item_feel">體感舒適度：</string>
+    <string name="weather_item_time">更新時間：</string>
+
     <!-- list_item_air -->
     <string name="air_country">縣市位置：</string>
     <string name="air_site">監測位置：</string>

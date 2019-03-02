@@ -36,7 +36,7 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
     @Override
     protected void initAllMembersView(Bundle savedInstanceState) {
         // 取得 RecyclerView 的資料
-        presenter.getRecyclerViewData();
+        presenter.getRecyclerViewData(context);
     }
 
     @Override

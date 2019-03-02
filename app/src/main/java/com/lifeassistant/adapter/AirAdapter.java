@@ -56,13 +56,22 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
         String site = list.get(i).getSiteName();
         String index = list.get(i).getAQI();
         String time = list.get(i).getPublishTime().replace("-", "/");
+        final int level;
+        final int color;
 
         // 設定 AQI 指標級別的顏色
-        int level = checkAQILevel(Integer.parseInt(index));
-        int color = getColorByLevel(viewHolder, level);
-        Drawable wrappedDrawable = DrawableCompat.wrap(viewHolder.drawable);
-        DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
-        viewHolder.aqiTextView.setBackground(viewHolder.drawable);
+        if (index.equals("") || index == null) {
+            // 設備維護中的情況
+            level = 2;
+            color = getColorByLevel(viewHolder, level);
+            index = "E";
+        } else {
+            level = checkAQILevel(Integer.parseInt(index));
+            color = getColorByLevel(viewHolder, level);
+            Drawable wrappedDrawable = DrawableCompat.wrap(viewHolder.drawable);
+            DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
+            viewHolder.aqiTextView.setBackground(viewHolder.drawable);
+        }
 
         // 設定 ItemView 的畫面
         viewHolder.aqiTextView.setText(index);

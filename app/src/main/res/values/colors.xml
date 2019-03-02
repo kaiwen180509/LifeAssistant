@@ -6,6 +6,7 @@
 
     <!-- Common -->
     <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
 
     <!-- AQI Level Color -->
     <color name="colorLevelGood">#9ccc65</color>
@@ -14,4 +15,7 @@
     <color name="colorLevelBad">#ef5350</color>
     <color name="colorLevelVeryBad">#ab47bc</color>
     <color name="colorLevelDanger">#7f0000</color>
+
+    <!-- Weather Color-->
+    <color name="weatherTitle">#439889</color>
 </resources>

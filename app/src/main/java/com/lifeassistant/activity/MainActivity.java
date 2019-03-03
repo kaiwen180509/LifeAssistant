@@ -29,8 +29,6 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
     DrawerLayout drawerLayout;
     @BindView(R.id.main_navigation)
     NavigationView navigationView;
-    @BindView(R.id.main_container)
-    FrameLayout frameLayout;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 

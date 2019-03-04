@@ -1,14 +1,59 @@
 <resources>
+    <!-- common -->
     <string name="app_name">LifeAssistant</string>
     <string name="drawer_open">開啟</string>
     <string name="drawer_close">關閉</string>
     <string name="open_gov_data">政府資料開放平臺</string>
+    <string name="data_null">無</string>
 
     <!-- drawer -->
     <string name="drawer_home">首頁</string>
     <string name="drawer_weather">天氣預報</string>
     <string name="drawer_air">空氣品質</string>
     <string name="drawer_setting">設定</string>
+
+    <!-- Weather Location -->
+    <string-array name="weather_location">
+        <item>臺北市</item>
+        <item>新北市</item>
+        <item>桃園市</item>
+        <item>臺中市</item>
+        <item>臺南市</item>
+        <item>高雄市</item>
+        <item>基隆市</item>
+        <item>新竹縣</item>
+        <item>新竹市</item>
+        <item>苗栗縣</item>
+        <item>彰化縣</item>
+        <item>南投縣</item>
+        <item>雲林縣</item>
+        <item>嘉義縣</item>
+        <item>嘉義市</item>
+        <item>屏東縣</item>
+        <item>宜蘭縣</item>
+        <item>花蓮縣</item>
+        <item>臺東縣</item>
+        <item>澎湖縣</item>
+        <item>金門縣</item>
+        <item>連江縣</item>
+    </string-array>
+
+    <!-- Home -->
+    <string name="home_title_weather">天氣預報</string>
+    <string name="home_temp">溫度：</string>
+    <string name="home_rain">降雨：</string>
+    <string name="home_description">描述：</string>
+    <string name="home_feel">體感：</string>
+    <string name="home_time">時間：</string>
+    <string name="home_time_symbol">~</string>
+    <string name="home_title_air">空氣品質</string>
+    <string name="home_location">觀測站位置：</string>
+    <string name="home_pollutant">污染指標物：</string>
+    <string name="home_pm25">PM2.5濃度：</string>
+    <string name="home_status">空氣狀態：</string>
+    <string name="home_influence">影響：</string>
+    <string name="home_suggestion">建議：</string>
+    <string name="home_monitor_time">監測時間：</string>
 
     <!-- Weather item -->
     <string name="weather_item_temp">溫度：</string>

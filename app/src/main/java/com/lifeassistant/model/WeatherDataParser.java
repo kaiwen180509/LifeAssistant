@@ -1,15 +1,157 @@
 package com.lifeassistant.model;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.format.DateFormat;
+
+import com.lifeassistant.R;
 import com.lifeassistant.retrofit.WeatherBean;
 
 import java.util.Arrays;
+import java.util.Calendar;
 
 public class WeatherDataParser {
+    private Context context;
     private WeatherBean.CwbopendataBean.DatasetBean dataset;
 
-    public WeatherDataParser(WeatherBean weatherBean) {
+    public WeatherDataParser(Context context, WeatherBean weatherBean) {
+        this.context = context;
         // 從 WeatherBean 取出資料集
         this.dataset = weatherBean.getCwbopendata().getDataset();
+    }
+
+    /**
+     * 判斷降雨機率解析顏色
+     *
+     * @param position 在資料集陣列的第幾個位置
+     * @return 顏色，預設使用 R.color.weatherTitle
+     */
+    public int parserColorData(int position) {
+        // 取得降雨機率
+        int rain = parserRainData(position);
+
+        // 好天氣
+        if (rain <= 20) {
+            return context.getResources().getColor(R.color.weatherSunny);
+        }
+        // 壞天氣
+        if (rain >= 60) {
+            return context.getResources().getColor(R.color.weatherRain);
+        }
+        // 正常情況
+        return context.getResources().getColor(R.color.weatherTitle);
+    }
+
+    /**
+     * 解析天氣描述的圖片
+     *
+     * @param position 在資料集陣列的第幾個位置
+     * @return 天氣圖片，預設使用 icon_weather_sunny_cloud
+     */
+    public Drawable parserWeatherImage(int position) {
+        // 取得層級
+        String[] description = parserDescriptionData(position);
+        int level = Integer.parseInt(description[1]);
+
+        // 取得目前的時間
+        Calendar calendar = Calendar.getInstance();
+        String hour = (String) DateFormat.format("kk", calendar.getTime());
+
+        // 判斷目前是晚上還是白天
+        boolean night = false;
+        if (Integer.parseInt(hour) >= 18 || Integer.parseInt(hour) <= 6) {
+            night = true;
+        }
+
+        // 晴天
+        if (level == 1 || level == 24) {
+            if (night) {
+                return context.getDrawable(R.drawable.icon_weather_sunny_night);
+            } else {
+                return context.getDrawable(R.drawable.icon_weather_sunny);
+            }
+        }
+        // 多雲時晴
+        if ((level >= 2 && level <= 3) || level == 25) {
+            if (night) {
+                return context.getDrawable(R.drawable.icon_weather_sunny_cloud_night);
+            } else {
+                return context.getDrawable(R.drawable.icon_weather_sunny_cloud);
+            }
+        }
+        // 多雲
+        if ((level >= 4 && level <= 7) || level == 27 || level == 28) {
+            return context.getDrawable(R.drawable.icon_weather_cloud);
+        }
+        // 雨天
+        if ((level >= 8 && level <= 14) || level == 20 || (level >= 29 && level <= 32) || level == 38 || level == 39) {
+            return context.getDrawable(R.drawable.icon_weather_rain_normal);
+        }
+        // 雷雨
+        if ((level >= 15 && level <= 18) || (level >= 21 && level <= 22) || (level >= 33 && level <= 36) || level == 41) {
+            return context.getDrawable(R.drawable.icon_weather_thunder);
+        }
+        // 太陽雨
+        if (level == 19) {
+            if (night) {
+                return context.getDrawable(R.drawable.icon_weather_sunny_rain_night);
+            } else {
+                return context.getDrawable(R.drawable.icon_weather_sunny_rain);
+            }
+        }
+        // 有雪
+        if (level == 23 || level == 37 || level == 42) {
+            return context.getDrawable(R.drawable.icon_weather_snow);
+        }
+        // 層級錯誤，使用預設圖片
+        return context.getDrawable(R.drawable.icon_weather_sunny_cloud);
+    }
+
+    /**
+     * 解析縣市得資料位置
+     *
+     * @param location 縣市
+     * @return 位置，沒有該縣市則回傳-1
+     */
+    public int parserPositionData(String location) {
+        // 取得縣市陣列
+        String[] locationArray = context.getResources().getStringArray(R.array.weather_location);
+        // 遍歷取得位置
+        for (int i = 0; i < locationArray.length; i++) {
+            if (locationArray[i].equals(location)) {
+                return i;
+            }
+        }
+        // 無該縣市資料
+        return -1;
+    }
+
+    /**
+     * 解析預報開始時間資料
+     *
+     * @param position 在資料集陣列的第幾個位置
+     * @return 時間
+     */
+    public String parserStartTimeData(int position) {
+        // 取出時間
+        String time = dataset.getLocation().get(position).getWeatherElement().get(0).getTime().get(0).getStartTime();
+        // 轉換格式
+        time = time.substring(0, 16).replace("-", "/").replace("T", " ");
+        return time;
+    }
+
+    /**
+     * 解析預報結束時間資料
+     *
+     * @param position 在資料集陣列的第幾個位置
+     * @return 時間
+     */
+    public String parserEndTimeData(int position) {
+        // 取出時間
+        String time = dataset.getLocation().get(position).getWeatherElement().get(0).getTime().get(2).getEndTime();
+        // 轉換格式
+        time = time.substring(0, 16).replace("-", "/").replace("T", " ");
+        return time;
     }
 
     /**

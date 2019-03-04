@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lifeassistant.R;
-import com.lifeassistant.retrofit.AQIBean;
-
-import java.util.ArrayList;
+import com.lifeassistant.model.AQIDataParser;
 
 import butterknife.BindColor;
 import butterknife.BindDrawable;
@@ -22,21 +20,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
-    private final static int COLOR_LEVEL_GOOD = 1;
-    private final static int COLOR_LEVEL_NORMAL = 2;
-    private final static int COLOR_LEVEL_MAYBE_BAD = 3;
-    private final static int COLOR_LEVEL_BAD = 4;
-    private final static int COLOR_LEVEL_VERY_BAD = 5;
-    private final static int COLOR_LEVEL_DANGER = 6;
-
-    // API 取得的 AQI 資料
-    private ArrayList<AQIBean> list;
+    // AQI 資料
+    private AQIDataParser dataParser;
 
     // 點擊事件
     private ClickEvent clickEvent;
 
-    public AirAdapter(ArrayList<AQIBean> list, ClickEvent clickEvent) {
-        this.list = list;
+    public AirAdapter(AQIDataParser dataParser, ClickEvent clickEvent) {
+        this.dataParser = dataParser;
         this.clickEvent = clickEvent;
     }
 
@@ -51,30 +42,20 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull AirAdapter.ViewHolder viewHolder, final int i) {
-        // 取得 API 的資料
-        String country = list.get(i).getCounty();
-        String site = list.get(i).getSiteName();
-        String index = list.get(i).getAQI();
-        String time = list.get(i).getPublishTime().replace("-", "/");
-        final int level;
-        final int color;
+        // 取得資料
+        String country = dataParser.parserCountryData(i);
+        String site = dataParser.parserSiteNameData(i);
+        String aqi = dataParser.parserAQIData(i);
+        String time = dataParser.parserTimeData(i);
+        int color = dataParser.parserColorData(i);
 
-        // 設定 AQI 指標級別的顏色
-        if (index.equals("") || index == null) {
-            // 設備維護中的情況
-            level = 2;
-            color = getColorByLevel(viewHolder, level);
-            index = "E";
-        } else {
-            level = checkAQILevel(Integer.parseInt(index));
-            color = getColorByLevel(viewHolder, level);
-            Drawable wrappedDrawable = DrawableCompat.wrap(viewHolder.drawable);
-            DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
-            viewHolder.aqiTextView.setBackground(viewHolder.drawable);
-        }
+        // 設定顏色
+        Drawable wrappedDrawable = DrawableCompat.wrap(viewHolder.drawable);
+        DrawableCompat.setTintList(wrappedDrawable, ColorStateList.valueOf(color));
+        viewHolder.aqiTextView.setBackground(viewHolder.drawable);
 
         // 設定 ItemView 的畫面
-        viewHolder.aqiTextView.setText(index);
+        viewHolder.aqiTextView.setText(aqi);
         viewHolder.countryTextView.setText(country);
         viewHolder.siteTextView.setText(site);
         viewHolder.timeTextView.setText(time);
@@ -82,62 +63,19 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickEvent.clickItem(i, level, color);
+                clickEvent.clickItem(i);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
-    }
-
-    /**
-     * 判斷 AQI 的指標等級
-     *
-     * @param index AQI 指標
-     * @return AQI 指標等級
-     */
-    private int checkAQILevel(int index) {
-        if (index < 51) {
-            return COLOR_LEVEL_GOOD;
-        } else if (index < 101) {
-            return COLOR_LEVEL_NORMAL;
-        } else if (index < 151) {
-            return COLOR_LEVEL_MAYBE_BAD;
-        } else if (index < 201) {
-            return COLOR_LEVEL_BAD;
-        } else if (index < 301) {
-            return COLOR_LEVEL_VERY_BAD;
-        }
-        return COLOR_LEVEL_DANGER;
-    }
-
-    /**
-     * 判斷等級的顏色
-     *
-     * @param viewHolder ItemView
-     * @param level      AQI 指標等級
-     * @return res/color 的顏色
-     */
-    private int getColorByLevel(ViewHolder viewHolder, int level) {
-        if (level == COLOR_LEVEL_GOOD) {
-            return viewHolder.colorGood;
-        } else if (level == COLOR_LEVEL_NORMAL) {
-            return viewHolder.colorNormal;
-        } else if (level == COLOR_LEVEL_MAYBE_BAD) {
-            return viewHolder.colorMaybeBad;
-        } else if (level == COLOR_LEVEL_BAD) {
-            return viewHolder.colorBad;
-        } else if (level == COLOR_LEVEL_VERY_BAD) {
-            return viewHolder.colorVeryBad;
-        }
-        return viewHolder.colorDanger;
+        return dataParser.parserDataSize();
     }
 
     public interface ClickEvent {
         // Item 的點擊事件
-        void clickItem(int position, int level, int color);
+        void clickItem(int position);
     }
 
     // 建立 ViewHolder

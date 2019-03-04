@@ -14,10 +14,11 @@
     <color name="colorLevelMaybeBad">#ffa726</color>
     <color name="colorLevelBad">#ef5350</color>
     <color name="colorLevelVeryBad">#ab47bc</color>
-    <color name="colorLevelDanger">#7f0000</color>
+    <color name="colorLevelDanger">#b71c1c</color>
+    <color name="colorLevelException">#ff5722</color>
 
     <!-- Weather Color-->
-    <color name="weatherTitle">#439889</color>
+    <color name="weatherTitle">#52c7b8</color>
     <color name="weatherRain">#03a9f4</color>
     <color name="weatherSunny">#ff9800</color>
 </resources>

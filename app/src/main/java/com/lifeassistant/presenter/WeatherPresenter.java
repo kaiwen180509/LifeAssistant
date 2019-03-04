@@ -29,7 +29,7 @@ public class WeatherPresenter extends BasePresenter<WeatherView> {
             Gson gson = new Gson();
             WeatherBean weather = gson.fromJson(preference.readWeatherData(), WeatherBean.class);
             // 建立解析器解析資料
-            WeatherDataParser weatherDataParser = new WeatherDataParser(weather);
+            WeatherDataParser weatherDataParser = new WeatherDataParser(context, weather);
             // 設定 RecyclerView 畫面
             getView().setRecyclerView(new WeatherAdapter(weatherDataParser));
         }

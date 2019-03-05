@@ -39,28 +39,28 @@ public class MainPresenter extends BasePresenter<MainView> {
             public void onClickHomeItem() {
                 // 關閉 Drawer，並且切換 Fragment
                 getView().closeDrawerView();
-                getView().replaceFragmentContainer(new HomeFragment()).commit();
+                getView().replaceFragmentContainer(new HomeFragment());
             }
 
             @Override
             public void onClickWeatherItem() {
                 // 關閉 Drawer，並且切換 Fragment
                 getView().closeDrawerView();
-                getView().replaceFragmentContainer(new WeatherFragment()).commit();
+                getView().replaceFragmentContainer(new WeatherFragment());
             }
 
             @Override
             public void onClickAirItem() {
                 // 關閉 Drawer，並且切換 Fragment
                 getView().closeDrawerView();
-                getView().replaceFragmentContainer(new AirFragment()).commit();
+                getView().replaceFragmentContainer(new AirFragment());
             }
 
             @Override
             public void onClickSettingItem() {
                 // 關閉 Drawer，並且切換 Fragment
                 getView().closeDrawerView();
-                getView().replaceFragmentContainer(new SettingFragment()).commit();
+                getView().replaceFragmentContainer(new SettingFragment());
             }
 
             @Override

@@ -11,27 +11,37 @@ public abstract class BaseFragmentActivity extends BaseActivity {
     // 第一個 Fragment
     protected abstract Fragment getFirstFragment();
 
+    // 目前的 Fragment
+    protected String currentFragment;
+
     protected abstract int getContainerID();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fragmentManager = getSupportFragmentManager();
+
         // 建立第一個 Fragment
-        addFragment(getFirstFragment()).commit();
+        addFragment(getFirstFragment());
+    }
+
+    // 目前的 Fragment
+    protected String getCurrentFragment() {
+        return currentFragment;
     }
 
     // 增加 Fragment
-    protected FragmentTransaction addFragment(Fragment fragment) {
+    protected void addFragment(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(getContainerID(), fragment);
-        return transaction;
+        transaction.add(getContainerID(), fragment).commit();
+        currentFragment = fragment.getClass().getName();
     }
 
     // 替換 Fragment
-    protected FragmentTransaction replaceFragment(Fragment fragment) {
+    protected void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(getContainerID(), fragment);
-        return transaction;
+        transaction.replace(getContainerID(), fragment).commit();
+        currentFragment = fragment.getClass().getName();
     }
 }

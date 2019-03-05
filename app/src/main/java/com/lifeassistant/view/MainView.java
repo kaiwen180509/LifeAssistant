@@ -21,6 +21,6 @@ public interface MainView extends BaseView{
     /**
      * 替換 Fragment
      */
-    FragmentTransaction replaceFragmentContainer(Fragment fragment);
+    void replaceFragmentContainer(Fragment fragment);
 
 }

@@ -3,6 +3,7 @@ package com.lifeassistant.activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,7 +11,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragmentActivity;
@@ -86,6 +86,7 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        FragmentManager manager = getSupportFragmentManager();
         // 建立 Menu
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -115,8 +116,8 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
 
     // 切換 Fragment
     @Override
-    public FragmentTransaction replaceFragmentContainer(Fragment fragment) {
-        return replaceFragment(fragment);
+    public void replaceFragmentContainer(Fragment fragment) {
+        replaceFragment(fragment);
     }
 
 }

@@ -1,13 +1,18 @@
 package com.lifeassistant.fragment;
 
+import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragment;
 import com.lifeassistant.base.BasePresenter;
+import com.lifeassistant.dialog.CustomProgressDialog;
 import com.lifeassistant.presenter.HomePresenter;
 import com.lifeassistant.view.HomeView;
 
@@ -15,6 +20,8 @@ import butterknife.BindView;
 
 public class HomeFragment extends BaseFragment implements HomeView {
     private HomePresenter presenter;
+
+    private CustomProgressDialog progressDialog;
 
     // 宣告元件
     @BindView(R.id.home_main_image)
@@ -51,6 +58,8 @@ public class HomeFragment extends BaseFragment implements HomeView {
     TextView suggestionText;
     @BindView(R.id.home_monitor_time_text)
     TextView monitorTimeText;
+    @BindView(R.id.home_layout)
+    LinearLayout mainLayout;
 
     @Override
     protected BasePresenter getPresenter() {
@@ -69,8 +78,38 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
     @Override
     protected void initAllMembersView(Bundle savedInstanceState) {
+        // 生成進度條
+        progressDialog = new CustomProgressDialog(context);
+
         // 載入畫面的資料
         presenter.setHomeViewData(context);
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void closeProgress() {
+        progressDialog.close();
+    }
+
+    @Override
+    public void showView() {
+        mainLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideView() {
+        mainLayout.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showSnackbar(String msg, String action, View.OnClickListener listener) {
+        Snackbar snackbar = Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(action, listener);
+        snackbar.show();
     }
 
     @Override

@@ -2,11 +2,16 @@ package com.lifeassistant.presenter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.lifeassistant.R;
 import com.lifeassistant.base.BasePresenter;
+import com.lifeassistant.base.DataModel;
+import com.lifeassistant.callback.AllAPICallBack;
 import com.lifeassistant.model.AQIDataParser;
+import com.lifeassistant.model.AllAPIModel;
 import com.lifeassistant.model.LifeSharePreference;
 import com.lifeassistant.model.WeatherDataParser;
 import com.lifeassistant.retrofit.AQIBean;
@@ -19,6 +24,7 @@ import java.util.ArrayList;
 public class HomePresenter extends BasePresenter<HomeView> {
     private Context context;
     private int locationValue = 0;
+    private LifeSharePreference preference;
 
     // 設定 Home 畫面所需的資料
     public void setHomeViewData(Context context) {
@@ -27,17 +33,82 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
         this.context = context;
 
+        // 是否無資料，預設有資料
+        boolean noData = false;
+
+        // 資料載入完成前先隱藏畫面
+        getView().hideView();
+
         // 取出資料
-        LifeSharePreference preference = new LifeSharePreference(context);
+        preference = new LifeSharePreference(context);
         // 天氣資料
         if (!preference.readWeatherData().equals("")) {
             setWeatherData(preference.readWeatherData());
+        } else {
+            // 無資料
+            noData = true;
         }
         // 空氣資料
         if (!preference.readAQIData().equals("")) {
             setAirData(preference.readAQIData());
+        } else {
+            // 無資料
+            noData = true;
+        }
+
+        // 沒有資料
+        if (noData) {
+            // Snackbar 要顯示的資料
+            String msg = context.getString(R.string.home_snack_msg);
+            String action = context.getString(R.string.home_snack_action);
+            getView().showSnackbar(msg, action, snackbarListener);
+        } else {
+            // 資料載入完成，顯示畫面
+            getView().showView();
         }
     }
+
+    // Snackbar 的 Click 事件
+    private View.OnClickListener snackbarListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // 顯示進度條
+            getView().showProgress();
+
+            // 呼叫 API 取得資料
+            DataModel.request(AllAPIModel.class).execute(new AllAPICallBack() {
+                @Override
+                public void onWeatherDataPrepared(String response) {
+                    // 保存資料並且設定畫面
+                    preference.saveWeatherData(response);
+                    setWeatherData(response);
+                }
+
+                @Override
+                public void onAqiDataPrepared(String response) {
+                    // 保存資料並且設定畫面
+                    preference.saveAQIData(response);
+                    setAirData(response);
+                }
+
+                @Override
+                public void onFailure() {
+                    // 關閉進度條並且顯示 Snackbar
+                    getView().closeProgress();
+                    String msg = context.getString(R.string.home_snack_failure);
+                    String action = context.getString(R.string.home_snack_action);
+                    getView().showSnackbar(msg, action, snackbarListener);
+                }
+
+                @Override
+                public void onComplete() {
+                    // 關閉進度條並且顯示畫面
+                    getView().closeProgress();
+                    getView().showView();
+                }
+            });
+        }
+    };
 
     // 設定天氣資料
     private void setWeatherData(String jsonData) {

@@ -43,7 +43,7 @@ public class AirFragment extends BaseFragment implements AirView {
     }
 
     @Override
-    public void setRecyclerView(AirAdapter adapter) {
+    public void setRecyclerView(RecyclerView.Adapter adapter) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
     }

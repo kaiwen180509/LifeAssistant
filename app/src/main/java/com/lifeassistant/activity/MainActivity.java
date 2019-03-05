@@ -35,6 +35,7 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
     // 宣告 Presenter
     private MainPresenter presenter;
 
+
     @Override
     protected BasePresenter getPresenter() {
         // 初始化 MainPresenter
@@ -93,16 +94,16 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // 設定 MenuItem 的動作
-        if (item.getItemId() == R.id.action_help) {
-            showToast("說明");
+        if (item.getItemId() == R.id.action_refresh) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    // 設定 Navigation
     @Override
     public void setNavigationSelectedListener(MainNavigationListener listener) {
-        // 設定 Navigation
+
         navigationView.setNavigationItemSelectedListener(listener);
     }
 

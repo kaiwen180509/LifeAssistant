@@ -8,4 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Progress Dialog Theme -->
+    <style name="CustomProgressDialog" parent="AppTheme">
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 無邊框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 在畫面最上層 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 畫面不暗 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <!-- 透明背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 無標題 -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

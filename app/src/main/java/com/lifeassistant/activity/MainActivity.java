@@ -86,7 +86,6 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        FragmentManager manager = getSupportFragmentManager();
         // 建立 Menu
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;

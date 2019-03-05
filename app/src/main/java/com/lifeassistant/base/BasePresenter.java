@@ -1,5 +1,9 @@
 package com.lifeassistant.base;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
 public abstract class BasePresenter<V extends BaseView> {
 
     /**
@@ -35,6 +39,21 @@ public abstract class BasePresenter<V extends BaseView> {
         if (!isViewAttached()) {
             return;
         }
+    }
+
+    /**
+     * 檢查網路是否有連線
+     */
+    public boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = manager.getActiveNetworkInfo();
+
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
     }
 
     /**

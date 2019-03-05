@@ -58,18 +58,25 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
         // 沒有資料
         if (noData) {
+            // 沒有網路連線
+            if (!isNetworkConnected(context)) {
+                String msg = context.getString(R.string.home_snack_no_network);
+                getView().showSnackbar(msg);
+                return;
+            }
+
             // Snackbar 要顯示的資料
             String msg = context.getString(R.string.home_snack_msg);
             String action = context.getString(R.string.home_snack_action);
-            getView().showSnackbar(msg, action, snackbarListener);
+            getView().showSnackbar(msg, action, refreshListener);
         } else {
             // 資料載入完成，顯示畫面
             getView().showView();
         }
     }
 
-    // Snackbar 的 Click 事件
-    private View.OnClickListener snackbarListener = new View.OnClickListener() {
+    // 取得資料的 Click 事件
+    private View.OnClickListener refreshListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             // 顯示進度條
@@ -97,7 +104,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
                     getView().closeProgress();
                     String msg = context.getString(R.string.home_snack_failure);
                     String action = context.getString(R.string.home_snack_action);
-                    getView().showSnackbar(msg, action, snackbarListener);
+                    getView().showSnackbar(msg, action, refreshListener);
                 }
 
                 @Override

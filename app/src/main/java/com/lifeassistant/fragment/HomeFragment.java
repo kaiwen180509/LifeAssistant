@@ -113,6 +113,11 @@ public class HomeFragment extends BaseFragment implements HomeView {
     }
 
     @Override
+    public void showSnackbar(String msg) {
+        Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE).show();
+    }
+
+    @Override
     public void setWeatherImage(Drawable drawable) {
         weatherImageView.setImageDrawable(drawable);
     }

@@ -55,6 +55,7 @@
     <string name="home_influence">影響：</string>
     <string name="home_suggestion">建議：</string>
     <string name="home_monitor_time">監測時間：</string>
+    <string name="home_snack_no_network">找不到網路，請連線再試試看！</string>
     <string name="home_snack_msg">找不到任何資料，請問要呼叫資料嗎?</string>
     <string name="home_snack_failure">資料在路上迷路了，請問要重新呼叫嗎?</string>
     <string name="home_snack_action">確認</string>

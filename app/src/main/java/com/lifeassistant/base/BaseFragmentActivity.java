@@ -13,7 +13,6 @@ public abstract class BaseFragmentActivity extends BaseActivity {
 
     protected abstract int getContainerID();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

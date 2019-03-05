@@ -21,6 +21,9 @@ public interface HomeView extends BaseView {
     // 顯示 Snackbar
     void showSnackbar(String msg, String action, View.OnClickListener listener);
 
+    // 顯示 Snackbar
+    void showSnackbar(String msg);
+
     // 設定天氣的圖片
     void setWeatherImage(Drawable drawable);
 

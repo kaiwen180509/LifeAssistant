@@ -1,5 +1,8 @@
 package com.lifeassistant.activity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -31,6 +34,24 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
     // 宣告 Presenter
     private MainPresenter presenter;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // 綁定 View
+        ButterKnife.bind(this);
+
+        // 設定 ActionBar
+        setToolBar();
+
+        // 呼叫 Presenter 設置 NavigationView
+        presenter.getNavigationViewListener();
+
+        // 呼叫 Presenter 準備資料
+        presenter.getAQIData(this);
+        presenter.getWeatherData(this);
+    }
+
 
     @Override
     protected BasePresenter getPresenter() {
@@ -51,24 +72,6 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
         return R.id.main_container;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        // 綁定 View
-        ButterKnife.bind(this);
-
-        // 設定 ActionBar
-        setToolBar();
-
-        // 呼叫 Presenter 設置 NavigationView
-        presenter.getNavigationViewListener();
-
-        // 呼叫 Presenter 準備資料
-        presenter.getAQIData(this);
-        presenter.getWeatherData(this);
-    }
-
     // 設定上方的 ActionBar
     private void setToolBar() {
         setSupportActionBar(toolbar);
@@ -80,10 +83,9 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
         toggle.syncState();
     }
 
-    // 設定 Navigation
     @Override
     public void setNavigationSelectedListener(MainNavigationListener listener) {
-
+        // 設定 Navigation 的 Listener
         navigationView.setNavigationItemSelectedListener(listener);
     }
 

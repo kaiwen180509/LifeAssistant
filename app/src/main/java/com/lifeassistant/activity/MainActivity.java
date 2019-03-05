@@ -3,14 +3,10 @@ package com.lifeassistant.activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragmentActivity;
@@ -82,22 +78,6 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
                 this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // 建立 Menu
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // 設定 MenuItem 的動作
-        if (item.getItemId() == R.id.action_refresh) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     // 設定 Navigation

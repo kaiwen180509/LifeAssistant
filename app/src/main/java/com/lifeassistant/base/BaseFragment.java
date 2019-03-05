@@ -44,6 +44,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         if (getPresenter() != null) {
             getPresenter().attachView(this);
         }
+
+        // 設定 Menu 變更生效
+        setHasOptionsMenu(true);
     }
 
     @Nullable

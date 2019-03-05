@@ -11,9 +11,6 @@ public abstract class BaseFragmentActivity extends BaseActivity {
     // 第一個 Fragment
     protected abstract Fragment getFirstFragment();
 
-    // 目前的 Fragment
-    protected String currentFragment;
-
     protected abstract int getContainerID();
 
 
@@ -26,22 +23,15 @@ public abstract class BaseFragmentActivity extends BaseActivity {
         addFragment(getFirstFragment());
     }
 
-    // 目前的 Fragment
-    protected String getCurrentFragment() {
-        return currentFragment;
-    }
-
     // 增加 Fragment
     protected void addFragment(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.add(getContainerID(), fragment).commit();
-        currentFragment = fragment.getClass().getName();
     }
 
     // 替換 Fragment
     protected void replaceFragment(Fragment fragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(getContainerID(), fragment).commit();
-        currentFragment = fragment.getClass().getName();
     }
 }

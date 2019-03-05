@@ -79,9 +79,6 @@ public class MainPresenter extends BasePresenter<MainView> {
             public void onWeatherDataPrepared(String response) {
                 LifeSharePreference preference = new LifeSharePreference(context);
                 preference.saveWeatherData(response);
-                Gson gson = new Gson();
-                WeatherBean weather = gson.fromJson(response, WeatherBean.class);
-                Log.e("getWeatherData", "content ->" + weather.getCwbopendata().getDataset().getDatasetInfo().getDatasetDescription());
             }
 
             @Override
@@ -101,10 +98,13 @@ public class MainPresenter extends BasePresenter<MainView> {
         // 檢查 View 是否連接
         checkView();
 
-        DataModel.request(AQIAPIModel.class).execute(new AQICallBack() {
+        // 取得 SharePreference
+        LifeSharePreference preference = new LifeSharePreference(context);
+
+        // 呼叫 AQI API 模組取得 AQI 內容，傳遞舊的內容以便判斷是否有更新
+        DataModel.request(AQIAPIModel.class).params(preference.readAQIData()).execute(new AQICallBack() {
             @Override
             public void onAQIDataPrepared(String response) {
-                LifeSharePreference preference = new LifeSharePreference(context);
                 preference.saveAQIData(response);
             }
 
@@ -115,7 +115,6 @@ public class MainPresenter extends BasePresenter<MainView> {
 
             @Override
             public void onComplete() {
-
             }
         });
     }

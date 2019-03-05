@@ -2,7 +2,7 @@ package com.lifeassistant.base;
 
 public abstract class BaseModel<T> {
     // 參數
-    protected Object[] mParams;
+    protected Object[] mParams = null;
 
     // 設置 Model 的參數
     public BaseModel params(Object... args) {

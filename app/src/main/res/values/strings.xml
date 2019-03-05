@@ -39,6 +39,7 @@
     </string-array>
 
     <!-- Home -->
+    <string name="home_title_air">空氣品質</string>
     <string name="home_title_weather">天氣預報</string>
     <string name="home_temp">溫度：</string>
     <string name="home_rain">降雨：</string>
@@ -46,11 +47,10 @@
     <string name="home_feel">體感：</string>
     <string name="home_time">時間：</string>
     <string name="home_time_symbol">~</string>
-    <string name="home_title_air">空氣品質</string>
     <string name="home_location">觀測站位置：</string>
     <string name="home_pollutant">污染指標物：</string>
     <string name="home_pm25">PM2.5濃度：</string>
-    <string name="home_status">空氣狀態：</string>
+    <string name="home_status">空氣的狀態：</string>
     <string name="home_influence">影響：</string>
     <string name="home_suggestion">建議：</string>
     <string name="home_monitor_time">監測時間：</string>

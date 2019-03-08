@@ -39,7 +39,7 @@ public class MainPresenter extends BasePresenter<MainView> {
             @Override
             public void onClickHomeItem() {
                 // 設定標題，關閉 Drawer，並且切換 Fragment
-                getView().setActionTitle(context.getString(R.string.drawer_home));
+                getView().setActionTitle(context.getString(R.string.app_name));
                 getView().closeDrawerView();
                 getView().replaceFragmentContainer(new HomeFragment());
             }

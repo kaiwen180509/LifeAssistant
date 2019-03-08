@@ -1,6 +1,6 @@
 <resources>
     <!-- common -->
-    <string name="app_name">LifeAssistant</string>
+    <string name="app_name">生活幫手</string>
     <string name="drawer_open">開啟</string>
     <string name="drawer_close">關閉</string>
     <string name="open_gov_data">政府資料開放平臺</string>

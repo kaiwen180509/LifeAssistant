@@ -10,6 +10,7 @@ import com.lifeassistant.R;
 import com.lifeassistant.base.BasePresenter;
 import com.lifeassistant.base.DataModel;
 import com.lifeassistant.callback.AllAPICallBack;
+import com.lifeassistant.dialog.RefreshDialog;
 import com.lifeassistant.model.AQIDataParser;
 import com.lifeassistant.model.AllAPIModel;
 import com.lifeassistant.model.LifeSharePreference;
@@ -25,6 +26,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     private Context context;
     private int locationValue = 0;
     private LifeSharePreference preference;
+    private RefreshDialog refreshDialog;
 
     // 設定 Home 畫面所需的資料
     public void setHomeViewData(Context context) {
@@ -75,47 +77,78 @@ public class HomePresenter extends BasePresenter<HomeView> {
         }
     }
 
+    // 顯示 RefreshDialog
+    public void showRefreshDialog(Context context) {
+        // 檢查 View
+        checkView();
+
+        this.context = context;
+
+        // 建立 RefreshDialog 並顯示
+        refreshDialog = new RefreshDialog(context);
+        refreshDialog.setConfirmClick(confirmClickListener);
+        refreshDialog.show();
+    }
+
+    // RefreshDialog 的 Click 事件
+    private View.OnClickListener confirmClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // 先關閉 Dialog 並隱藏畫面
+            refreshDialog.close();
+            getView().hideView();
+            // 更新資料
+            refreshData();
+        }
+    };
+
     // 取得資料的 Click 事件
     private View.OnClickListener refreshListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            // 顯示進度條
-            getView().showProgress();
-
-            // 呼叫 API 取得資料
-            DataModel.request(AllAPIModel.class).execute(new AllAPICallBack() {
-                @Override
-                public void onWeatherDataPrepared(String response) {
-                    // 保存資料並且設定畫面
-                    preference.saveWeatherData(response);
-                    setWeatherData(response);
-                }
-
-                @Override
-                public void onAqiDataPrepared(String response) {
-                    // 保存資料並且設定畫面
-                    preference.saveAQIData(response);
-                    setAirData(response);
-                }
-
-                @Override
-                public void onFailure() {
-                    // 關閉進度條並且顯示 Snackbar
-                    getView().closeProgress();
-                    String msg = context.getString(R.string.home_snack_failure);
-                    String action = context.getString(R.string.home_snack_action);
-                    getView().showSnackbar(msg, action, refreshListener);
-                }
-
-                @Override
-                public void onComplete() {
-                    // 關閉進度條並且顯示畫面
-                    getView().closeProgress();
-                    getView().showView();
-                }
-            });
+            // 更新資料
+            refreshData();
         }
     };
+
+    // 更新 API 資料
+    private void refreshData() {
+        // 顯示進度條
+        getView().showProgress();
+
+        // 呼叫 API 取得資料
+        DataModel.request(AllAPIModel.class).execute(new AllAPICallBack() {
+            @Override
+            public void onWeatherDataPrepared(String response) {
+                // 保存資料並且設定畫面
+                preference.saveWeatherData(response);
+                setWeatherData(response);
+            }
+
+            @Override
+            public void onAqiDataPrepared(String response) {
+                // 保存資料並且設定畫面
+                preference.saveAQIData(response);
+                setAirData(response);
+            }
+
+            @Override
+            public void onFailure() {
+                // 關閉進度條並且顯示 Snackbar
+                getView().closeProgress();
+                String msg = context.getString(R.string.home_snack_failure);
+                String action = context.getString(R.string.home_snack_action);
+                getView().showSnackbar(msg, action, refreshListener);
+            }
+
+            @Override
+            public void onComplete() {
+                // 關閉進度條並且顯示畫面
+                getView().closeProgress();
+                getView().showView();
+            }
+        });
+    }
 
     // 設定天氣資料
     private void setWeatherData(String jsonData) {

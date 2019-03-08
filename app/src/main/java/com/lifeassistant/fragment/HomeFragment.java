@@ -99,6 +99,7 @@ public class HomeFragment extends BaseFragment implements HomeView {
     public boolean onOptionsItemSelected(MenuItem item) {
         // 設定 MenuItem 的動作
         if (item.getItemId() == R.id.action_refresh) {
+            presenter.showRefreshDialog(context);
             return true;
         }
         return super.onOptionsItemSelected(item);

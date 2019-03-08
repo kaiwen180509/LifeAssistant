@@ -18,6 +18,54 @@
     <string name="setting_weather">天氣預報的位置</string>
     <string name="setting_air">空氣品質的位置</string>
 
+    <!-- Home -->
+    <string name="home_title_air">空氣品質</string>
+    <string name="home_title_weather">天氣預報</string>
+    <string name="home_temp">溫度：</string>
+    <string name="home_rain">降雨：</string>
+    <string name="home_description">描述：</string>
+    <string name="home_feel">體感：</string>
+    <string name="home_time">時間：</string>
+    <string name="home_time_symbol">~</string>
+    <string name="home_location">觀測站位置：</string>
+    <string name="home_pollutant">污染指標物：</string>
+    <string name="home_pm25">PM2.5濃度：</string>
+    <string name="home_status">空氣的狀態：</string>
+    <string name="home_influence">影響：</string>
+    <string name="home_suggestion">建議：</string>
+    <string name="home_monitor_time">監測時間：</string>
+    <string name="home_snack_no_network">找不到網路，請連線再試試看！</string>
+    <string name="home_snack_msg">找不到任何資料，請問要呼叫資料嗎?</string>
+    <string name="home_snack_failure">資料在路上迷路了，請問要重新呼叫嗎?</string>
+    <string name="home_snack_action">確認</string>
+
+    <!-- Weather item -->
+    <string name="weather_item_temp">溫度：</string>
+    <string name="weather_item_rain">降雨：</string>
+    <string name="weather_item_description">描述：</string>
+    <string name="weather_item_feel">體感舒適度：</string>
+    <string name="weather_item_time">更新時間：</string>
+
+    <!-- list_item_air -->
+    <string name="air_country">縣市位置：</string>
+    <string name="air_site">監測位置：</string>
+    <string name="air_status">空氣狀態：</string>
+    <string name="air_time">監測時間：</string>
+
+    <!-- Air Dialog -->
+    <string name="air_dialog_confirm">OK</string>
+    <string name="air_dialog_location">觀測站位置：</string>
+    <string name="air_dialog_pollutant">污染指標物：</string>
+    <string name="air_dialog_aqi">AQI 指數：</string>
+    <string name="air_dialog_influence">影響：</string>
+    <string name="air_dialog_suggestion">建議：</string>
+
+    <!-- Refresh Dialog -->
+    <string name="refresh_dialog_title">更新資料</string>
+    <string name="refresh_dialog_content">請問是否要更新資料?</string>
+    <string name="refresh_dialog_confirm">確認</string>
+    <string name="refresh_dialog_cancel">取消</string>
+
     <!-- Weather Location -->
     <string-array name="weather_location">
         <item>臺北市</item>
@@ -127,48 +175,6 @@
         <item>連江縣 馬祖</item>
         <item>澎湖縣 馬公</item>
     </string-array>
-
-    <!-- Home -->
-    <string name="home_title_air">空氣品質</string>
-    <string name="home_title_weather">天氣預報</string>
-    <string name="home_temp">溫度：</string>
-    <string name="home_rain">降雨：</string>
-    <string name="home_description">描述：</string>
-    <string name="home_feel">體感：</string>
-    <string name="home_time">時間：</string>
-    <string name="home_time_symbol">~</string>
-    <string name="home_location">觀測站位置：</string>
-    <string name="home_pollutant">污染指標物：</string>
-    <string name="home_pm25">PM2.5濃度：</string>
-    <string name="home_status">空氣的狀態：</string>
-    <string name="home_influence">影響：</string>
-    <string name="home_suggestion">建議：</string>
-    <string name="home_monitor_time">監測時間：</string>
-    <string name="home_snack_no_network">找不到網路，請連線再試試看！</string>
-    <string name="home_snack_msg">找不到任何資料，請問要呼叫資料嗎?</string>
-    <string name="home_snack_failure">資料在路上迷路了，請問要重新呼叫嗎?</string>
-    <string name="home_snack_action">確認</string>
-
-    <!-- Weather item -->
-    <string name="weather_item_temp">溫度：</string>
-    <string name="weather_item_rain">降雨：</string>
-    <string name="weather_item_description">描述：</string>
-    <string name="weather_item_feel">體感舒適度：</string>
-    <string name="weather_item_time">更新時間：</string>
-
-    <!-- list_item_air -->
-    <string name="air_country">縣市位置：</string>
-    <string name="air_site">監測位置：</string>
-    <string name="air_status">空氣狀態：</string>
-    <string name="air_time">監測時間：</string>
-
-    <!-- Air Dialog -->
-    <string name="air_dialog_confirm">OK</string>
-    <string name="air_dialog_location">觀測站位置：</string>
-    <string name="air_dialog_pollutant">污染指標物：</string>
-    <string name="air_dialog_aqi">AQI 指數：</string>
-    <string name="air_dialog_influence">影響：</string>
-    <string name="air_dialog_suggestion">建議：</string>
 
     <!-- AQI influences -->
     <string name="aqi_influence_good">空氣品質為良好，污染程度低或無污染。</string>

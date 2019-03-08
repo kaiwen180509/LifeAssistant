@@ -13,6 +13,10 @@
     <string name="drawer_air">空氣品質</string>
     <string name="drawer_setting">設定</string>
 
+    <!-- setting -->
+    <string name="setting_weather">天氣預報的位置</string>
+    <string name="setting_air">空氣品質的位置</string>
+
     <!-- Weather Location -->
     <string-array name="weather_location">
         <item>臺北市</item>
@@ -37,6 +41,90 @@
         <item>澎湖縣</item>
         <item>金門縣</item>
         <item>連江縣</item>
+    </string-array>
+
+    <!-- Air Location -->
+    <string-array name="air_location">
+        <item>臺北市 陽明</item>
+        <item>臺北市 士林</item>
+        <item>臺北市 松山</item>
+        <item>臺北市 中山</item>
+        <item>臺北市 萬華</item>
+        <item>臺北市 古亭</item>
+        <item>臺北市 大同</item>
+        <item>新北市 富貴角</item>
+        <item>新北市 淡水</item>
+        <item>新北市 萬里</item>
+        <item>新北市 汐止</item>
+        <item>新北市 三重</item>
+        <item>新北市 永和</item>
+        <item>新北市 新店</item>
+        <item>新北市 土城</item>
+        <item>新北市 板橋</item>
+        <item>新北市 新莊</item>
+        <item>新北市 菜寮</item>
+        <item>新北市 林口</item>
+        <item>基隆市 基隆</item>
+        <item>宜蘭縣 宜蘭</item>
+        <item>宜蘭縣 冬山</item>
+        <item>花蓮縣 花蓮</item>
+        <item>臺東縣 臺東</item>
+        <item>臺東縣 關山</item>
+        <item>桃園市 桃園</item>
+        <item>桃園市 大園</item>
+        <item>桃園市 觀音</item>
+        <item>桃園市 平鎮</item>
+        <item>桃園市 中壢</item>
+        <item>桃園市 龍潭</item>
+        <item>新竹縣 湖口</item>
+        <item>新竹縣 竹東</item>
+        <item>新竹市 新竹</item>
+        <item>苗栗縣 頭份</item>
+        <item>苗栗縣 苗栗</item>
+        <item>苗栗縣 三義</item>
+        <item>臺中市 豐原</item>
+        <item>臺中市 沙鹿</item>
+        <item>臺中市 大里</item>
+        <item>臺中市 忠明</item>
+        <item>臺中市 西屯</item>
+        <item>彰化縣 彰化</item>
+        <item>彰化縣 彰化(大城)</item>
+        <item>彰化縣 線西</item>
+        <item>彰化縣 二林</item>
+        <item>南投縣 南投</item>
+        <item>南投縣 竹山</item>
+        <item>南投縣 埔里</item>
+        <item>雲林縣 臺西</item>
+        <item>雲林縣 斗六</item>
+        <item>雲林縣 崙背</item>
+        <item>雲林縣 麥寮</item>
+        <item>嘉義縣 新港</item>
+        <item>嘉義縣 朴子</item>
+        <item>嘉義市 嘉義</item>
+        <item>臺南市 新營</item>
+        <item>臺南市 安南</item>
+        <item>臺南市 善化</item>
+        <item>臺南市 臺南</item>
+        <item>臺南市 臺南(玉井)</item>
+        <item>高雄市 復興</item>
+        <item>高雄市 美濃</item>
+        <item>高雄市 橋頭</item>
+        <item>高雄市 仁武</item>
+        <item>高雄市 鳳山</item>
+        <item>高雄市 大寮</item>
+        <item>高雄市 林園</item>
+        <item>高雄市 楠梓</item>
+        <item>高雄市 左營</item>
+        <item>高雄市 前金</item>
+        <item>高雄市 前鎮</item>
+        <item>高雄市 小港</item>
+        <item>屏東縣 屏東</item>
+        <item>屏東縣 潮州</item>
+        <item>屏東縣 恆春</item>
+        <item>屏東縣 屏東(琉球)</item>
+        <item>金門縣 金門</item>
+        <item>連江縣 馬祖</item>
+        <item>澎湖縣 馬公</item>
     </string-array>
 
     <!-- Home -->

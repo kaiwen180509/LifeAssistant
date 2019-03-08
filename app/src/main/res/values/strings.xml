@@ -5,7 +5,8 @@
     <string name="drawer_close">關閉</string>
     <string name="open_gov_data">政府資料開放平臺</string>
     <string name="data_null">無</string>
-    <string name="actionbar_menu">更新資料</string>
+    <string name="actionbar_menu_refresh">更新資料</string>
+    <string name="actionbar_menu_description">說明</string>
 
     <!-- drawer -->
     <string name="drawer_home">首頁</string>

@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -83,6 +86,22 @@ public class HomeFragment extends BaseFragment implements HomeView {
 
         // 載入畫面的資料
         presenter.setHomeViewData(context);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // 建立 Menu
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // 設定 MenuItem 的動作
+        if (item.getItemId() == R.id.action_refresh) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

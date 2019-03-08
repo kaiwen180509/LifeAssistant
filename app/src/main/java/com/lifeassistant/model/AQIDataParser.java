@@ -72,19 +72,19 @@ public class AQIDataParser {
     /**
      * 使用觀測站名稱解析資料位置
      *
-     * @param site 觀測站名稱
-     * @return 資料位置，查無資料則回傳 -1
+     * @param site 地點 + " " + 觀測站名稱 ex: "臺北市 陽明"
+     * @return 資料位置，查無資料則回傳 0
      */
     public int parserPositionData(String site) {
         // 遍歷找到資料
         for (int i = 0; i < list.size(); i++) {
             // 判斷資料位置
-            if (list.get(i).getSiteName().equals(site)) {
+            if ((list.get(i).getCounty() + " " + list.get(i).getSiteName()).equals(site)) {
                 return i;
             }
         }
         // 無資料
-        return -1;
+        return 0;
     }
 
     /**

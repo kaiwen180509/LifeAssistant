@@ -10,6 +10,7 @@ import com.lifeassistant.R;
 import com.lifeassistant.base.BasePresenter;
 import com.lifeassistant.base.DataModel;
 import com.lifeassistant.callback.AllAPICallBack;
+import com.lifeassistant.dialog.ExplanationDialog;
 import com.lifeassistant.dialog.RefreshDialog;
 import com.lifeassistant.model.AQIDataParser;
 import com.lifeassistant.model.AllAPIModel;
@@ -102,6 +103,16 @@ public class HomePresenter extends BasePresenter<HomeView> {
         }
     };
 
+    // 顯示 ExplanationDialog
+    public void showExplanationDialog(Context context) {
+        // 檢查 View
+        checkView();
+
+        // 建立 ExplanationDialog 並顯示
+        ExplanationDialog explanationDialog = new ExplanationDialog(context);
+        explanationDialog.show();
+    }
+
     // 取得資料的 Click 事件
     private View.OnClickListener refreshListener = new View.OnClickListener() {
         @Override
@@ -158,16 +169,21 @@ public class HomePresenter extends BasePresenter<HomeView> {
         // 使用 Weather 的解析器來取得資料
         WeatherDataParser weatherDataParser = new WeatherDataParser(context, weatherBean);
 
-        // 取得對應的資料
-        String title = weatherDataParser.parserLocationData(locationValue);
-        int[] temp = weatherDataParser.parserTemperatureData(locationValue);
-        int rain = weatherDataParser.parserRainData(locationValue);
-        String[] description = weatherDataParser.parserDescriptionData(locationValue);
-        String feel = weatherDataParser.parserFeelData(locationValue);
-        String startTime = weatherDataParser.parserStartTimeData(locationValue);
-        String endTime = weatherDataParser.parserEndTimeData(locationValue);
-        Drawable image = weatherDataParser.parserWeatherImage(locationValue);
-        int color = weatherDataParser.parserColorData(locationValue);
+        // 取得設定內的地點的資料
+        String data = preference.readDefaultWeatherLocation();
+        // 取得要顯示的資料所在位置
+        int index = weatherDataParser.parserPositionData(data);
+
+        // 取得位置對應的資料
+        String title = weatherDataParser.parserLocationData(index);
+        int[] temp = weatherDataParser.parserTemperatureData(index);
+        int rain = weatherDataParser.parserRainData(index);
+        String[] description = weatherDataParser.parserDescriptionData(index);
+        String feel = weatherDataParser.parserFeelData(index);
+        String startTime = weatherDataParser.parserStartTimeData(index);
+        String endTime = weatherDataParser.parserEndTimeData(index);
+        Drawable image = weatherDataParser.parserWeatherImage(index);
+        int color = weatherDataParser.parserColorData(index);
 
         // 設定畫面
         getView().setWeatherColor(color);
@@ -188,21 +204,25 @@ public class HomePresenter extends BasePresenter<HomeView> {
         Type typeToken = new TypeToken<ArrayList<AQIBean>>() {
         }.getType();
         ArrayList<AQIBean> list = gson.fromJson(jsonData, typeToken);
-
         // 使用 AQI 的解析器來取得資料
         AQIDataParser aqiDataParser = new AQIDataParser(context, list);
 
+        // 取得設定內的地點的資料
+        String data = preference.readDefaultAQISite();
+        // 取得要顯示的資料所在位置
+        int index = aqiDataParser.parserPositionData(data);
+
         // 取得對應的資料
-        String title = aqiDataParser.parserCountryData(locationValue);
-        String aqi = aqiDataParser.parserAQIData(locationValue);
-        String site = aqiDataParser.parserSiteNameData(locationValue);
-        String pollutant = aqiDataParser.parserPollutantData(locationValue);
-        String pm25 = aqiDataParser.parserPM25Data(locationValue);
-        String status = aqiDataParser.parserStatusData(locationValue);
-        String time = aqiDataParser.parserTimeData(locationValue);
-        String suggestion = aqiDataParser.parserSuggestionData(locationValue);
-        String influence = aqiDataParser.parserInfluenceData(locationValue);
-        int color = aqiDataParser.parserColorData(locationValue);
+        String title = aqiDataParser.parserCountryData(index);
+        String aqi = aqiDataParser.parserAQIData(index);
+        String site = aqiDataParser.parserSiteNameData(index);
+        String pollutant = aqiDataParser.parserPollutantData(index);
+        String pm25 = aqiDataParser.parserPM25Data(index);
+        String status = aqiDataParser.parserStatusData(index);
+        String time = aqiDataParser.parserTimeData(index);
+        String suggestion = aqiDataParser.parserSuggestionData(index);
+        String influence = aqiDataParser.parserInfluenceData(index);
+        int color = aqiDataParser.parserColorData(index);
 
         // 設定畫面
         getView().setAirTitle(title);

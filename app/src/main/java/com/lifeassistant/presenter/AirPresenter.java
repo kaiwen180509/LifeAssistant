@@ -4,7 +4,6 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.lifeassistant.R;
 import com.lifeassistant.adapter.AirAdapter;
 import com.lifeassistant.base.BasePresenter;
 import com.lifeassistant.dialog.AirDialog;
@@ -22,7 +21,7 @@ public class AirPresenter extends BasePresenter<AirView> {
 
     private Context context;
 
-    public void getAirData(Context context) {
+    public void setAirData(Context context) {
         // 檢查 View 是否連接
         checkView();
 

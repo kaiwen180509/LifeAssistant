@@ -66,6 +66,11 @@
     <string name="refresh_dialog_confirm">確認</string>
     <string name="refresh_dialog_cancel">取消</string>
 
+    <!-- Explanation Dialog -->
+    <string name="explanation_dialog_title">說明</string>
+    <string name="explanation_dialog_content">本APP主要功能為提供查詢天氣預報與空氣品質，主要資料皆來自【政府資料開放平臺】，使用了下列的資料集：\n1. 一般天氣預報-今明36小時天氣預報\n2. 空氣品質指標(AQI)\n\n開發者：Kai,Wen-Chen</string>
+    <string name="explanation_dialog_confirm">確認</string>
+
     <!-- Weather Location -->
     <string-array name="weather_location">
         <item>臺北市</item>

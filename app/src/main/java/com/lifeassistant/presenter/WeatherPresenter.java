@@ -14,7 +14,7 @@ public class WeatherPresenter extends BasePresenter<WeatherView> {
     private Context context;
 
     // 取得 RecyclerView 的 資料
-    public void getRecyclerViewData(Context context) {
+    public void setRecyclerViewData(Context context) {
         // 檢查 View 是否連接
         checkView();
 

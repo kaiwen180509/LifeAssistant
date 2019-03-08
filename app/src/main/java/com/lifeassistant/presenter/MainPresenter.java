@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.lifeassistant.R;
 import com.lifeassistant.base.BasePresenter;
 import com.lifeassistant.base.DataModel;
 import com.lifeassistant.callback.AQICallBack;
@@ -24,7 +25,7 @@ import com.lifeassistant.view.MainView;
 public class MainPresenter extends BasePresenter<MainView> {
 
     // 取得 Navigation 的 Listener
-    public void getNavigationViewListener() {
+    public void getNavigationViewListener(Context context) {
         // 檢查 View 是否連接
         checkView();
 
@@ -37,28 +38,32 @@ public class MainPresenter extends BasePresenter<MainView> {
 
             @Override
             public void onClickHomeItem() {
-                // 關閉 Drawer，並且切換 Fragment
+                // 設定標題，關閉 Drawer，並且切換 Fragment
+                getView().setActionTitle(context.getString(R.string.drawer_home));
                 getView().closeDrawerView();
                 getView().replaceFragmentContainer(new HomeFragment());
             }
 
             @Override
             public void onClickWeatherItem() {
-                // 關閉 Drawer，並且切換 Fragment
+                // 設定標題，關閉 Drawer，並且切換 Fragment
+                getView().setActionTitle(context.getString(R.string.drawer_weather));
                 getView().closeDrawerView();
                 getView().replaceFragmentContainer(new WeatherFragment());
             }
 
             @Override
             public void onClickAirItem() {
-                // 關閉 Drawer，並且切換 Fragment
+                // 設定標題，關閉 Drawer，並且切換 Fragment
+                getView().setActionTitle(context.getString(R.string.drawer_air));
                 getView().closeDrawerView();
                 getView().replaceFragmentContainer(new AirFragment());
             }
 
             @Override
             public void onClickSettingItem() {
-                // 關閉 Drawer，並且切換 Fragment
+                // 設定標題，關閉 Drawer，並且切換 Fragment
+                getView().setActionTitle(context.getString(R.string.drawer_setting));
                 getView().closeDrawerView();
                 getView().replaceFragmentContainer(new SettingFragment());
             }
@@ -73,6 +78,11 @@ public class MainPresenter extends BasePresenter<MainView> {
     public void getWeatherData(Context context) {
         // 檢查 View 是否連接
         checkView();
+
+        // 檢查網路連線，沒網路則不做任何事
+        if (!isNetworkConnected(context)) {
+            return;
+        }
 
         DataModel.request(WeatherAPIModel.class).execute(new WeatherCallBack() {
             @Override
@@ -97,6 +107,11 @@ public class MainPresenter extends BasePresenter<MainView> {
     public void getAQIData(Context context) {
         // 檢查 View 是否連接
         checkView();
+
+        // 檢查網路連線，沒網路則不做任何事
+        if (!isNetworkConnected(context)) {
+            return;
+        }
 
         // 取得 SharePreference
         LifeSharePreference preference = new LifeSharePreference(context);

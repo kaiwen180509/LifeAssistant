@@ -111,7 +111,7 @@ public class WeatherDataParser {
      * 解析縣市得資料位置
      *
      * @param location 縣市
-     * @return 位置，沒有該縣市則回傳-1
+     * @return 位置，沒有該縣市則回傳 0
      */
     public int parserPositionData(String location) {
         // 取得縣市陣列
@@ -123,7 +123,7 @@ public class WeatherDataParser {
             }
         }
         // 無該縣市資料
-        return -1;
+        return 0;
     }
 
     /**

@@ -45,7 +45,7 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
         setToolBar();
 
         // 呼叫 Presenter 設置 NavigationView
-        presenter.getNavigationViewListener();
+        presenter.getNavigationViewListener(this);
 
         // 呼叫 Presenter 準備資料
         presenter.getAQIData(this);
@@ -99,6 +99,11 @@ public class MainActivity extends BaseFragmentActivity implements MainView {
     @Override
     public void replaceFragmentContainer(Fragment fragment) {
         replaceFragment(fragment);
+    }
+
+    @Override
+    public void setActionTitle(String title) {
+        setTitle(title);
     }
 
 }

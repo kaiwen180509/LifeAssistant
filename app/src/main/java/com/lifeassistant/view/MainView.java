@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import com.lifeassistant.base.BaseView;
 import com.lifeassistant.model.MainNavigationListener;
 
-public interface MainView extends BaseView{
+public interface MainView extends BaseView {
     /**
      * 設定 NavigationView 的 Listener
      */
@@ -22,5 +22,12 @@ public interface MainView extends BaseView{
      * 替換 Fragment
      */
     void replaceFragmentContainer(Fragment fragment);
+
+    /**
+     * 更換 Actionbar 的標題
+     *
+     * @param title 標題
+     */
+    void setActionTitle(String title);
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragment;
 import com.lifeassistant.base.BasePresenter;
+import com.lifeassistant.dialog.CustomProgressDialog;
 import com.lifeassistant.presenter.AirPresenter;
 import com.lifeassistant.view.AirView;
 
@@ -17,6 +18,7 @@ import butterknife.BindView;
 
 public class AirFragment extends BaseFragment implements AirView {
     private AirPresenter presenter;
+    private CustomProgressDialog progressDialog;
 
     @BindView(R.id.air_recycler)
     RecyclerView recyclerView;
@@ -40,6 +42,10 @@ public class AirFragment extends BaseFragment implements AirView {
 
     @Override
     protected void initAllMembersView(Bundle savedInstanceState) {
+        // 生成進度條
+        progressDialog = new CustomProgressDialog(context);
+
+        // 取得 RecyclerView 的資料
         presenter.setAirData(context);
     }
 
@@ -59,5 +65,15 @@ public class AirFragment extends BaseFragment implements AirView {
     @Override
     public void showSnackbar(String msg) {
         Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE).show();
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void closeProgress() {
+        progressDialog.close();
     }
 }

@@ -3,26 +3,15 @@ package com.lifeassistant.view;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
+import com.lifeassistant.base.BaseFragmentView;
 import com.lifeassistant.base.BaseView;
 
-public interface HomeView extends BaseView {
-    // 顯示進度條
-    void showProgress();
-
-    // 關閉進度條
-    void closeProgress();
-
+public interface HomeView extends BaseFragmentView {
     // 顯示畫面
     void showView();
 
     // 隱藏畫面
     void hideView();
-
-    // 顯示 Snackbar
-    void showSnackbar(String msg, String action, View.OnClickListener listener);
-
-    // 顯示 Snackbar
-    void showSnackbar(String msg);
 
     // 設定天氣的圖片
     void setWeatherImage(Drawable drawable);

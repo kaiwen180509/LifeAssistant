@@ -1,6 +1,5 @@
 package com.lifeassistant.fragment;
 
-import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;

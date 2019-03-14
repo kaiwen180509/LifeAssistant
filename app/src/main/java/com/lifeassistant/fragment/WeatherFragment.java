@@ -9,6 +9,7 @@ import android.view.View;
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragment;
 import com.lifeassistant.base.BasePresenter;
+import com.lifeassistant.dialog.CustomProgressDialog;
 import com.lifeassistant.presenter.WeatherPresenter;
 import com.lifeassistant.view.WeatherView;
 
@@ -19,6 +20,7 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
     RecyclerView recyclerView;
 
     private WeatherPresenter presenter;
+    private CustomProgressDialog progressDialog;
 
     @Override
     protected BasePresenter getPresenter() {
@@ -37,6 +39,9 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
 
     @Override
     protected void initAllMembersView(Bundle savedInstanceState) {
+        // 生成進度條
+        progressDialog = new CustomProgressDialog(context);
+
         // 取得 RecyclerView 的資料
         presenter.setRecyclerViewData(context);
     }
@@ -58,5 +63,15 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
     @Override
     public void showSnackbar(String msg) {
         Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE).show();
+    }
+
+    @Override
+    public void showProgress() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void closeProgress() {
+        progressDialog.close();
     }
 }

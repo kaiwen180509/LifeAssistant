@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class HomePresenter extends BasePresenter<HomeView> {
     private Context context;
-    private int locationValue = 0;
     private LifeSharePreference preference;
     private RefreshDialog refreshDialog;
 
@@ -63,14 +62,14 @@ public class HomePresenter extends BasePresenter<HomeView> {
         if (noData) {
             // 沒有網路連線
             if (!isNetworkConnected(context)) {
-                String msg = context.getString(R.string.home_snack_no_network);
+                String msg = context.getString(R.string.snack_no_network);
                 getView().showSnackbar(msg);
                 return;
             }
 
             // Snackbar 要顯示的資料
-            String msg = context.getString(R.string.home_snack_msg);
-            String action = context.getString(R.string.home_snack_action);
+            String msg = context.getString(R.string.snack_msg);
+            String action = context.getString(R.string.snack_action);
             getView().showSnackbar(msg, action, refreshListener);
         } else {
             // 資料載入完成，顯示畫面
@@ -126,7 +125,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     private void refreshData() {
         // 檢查有沒有網路連線
         if (!isNetworkConnected(context)) {
-            String msg = context.getString(R.string.home_snack_no_network);
+            String msg = context.getString(R.string.snack_no_network);
             getView().showSnackbar(msg);
             return;
         }
@@ -154,8 +153,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
             public void onFailure() {
                 // 關閉進度條並且顯示 Snackbar
                 getView().closeProgress();
-                String msg = context.getString(R.string.home_snack_failure);
-                String action = context.getString(R.string.home_snack_action);
+                String msg = context.getString(R.string.snack_failure);
+                String action = context.getString(R.string.snack_action);
                 getView().showSnackbar(msg, action, refreshListener);
             }
 

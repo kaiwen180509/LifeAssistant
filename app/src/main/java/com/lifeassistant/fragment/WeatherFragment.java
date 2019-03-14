@@ -1,8 +1,10 @@
 package com.lifeassistant.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.lifeassistant.R;
 import com.lifeassistant.base.BaseFragment;
@@ -44,5 +46,17 @@ public class WeatherFragment extends BaseFragment implements WeatherView {
         // 設定 RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showSnackbar(String msg, String action, View.OnClickListener listener) {
+        Snackbar snackbar = Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(action, listener);
+        snackbar.show();
+    }
+
+    @Override
+    public void showSnackbar(String msg) {
+        Snackbar.make(rootView, msg, Snackbar.LENGTH_INDEFINITE).show();
     }
 }

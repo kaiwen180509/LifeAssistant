@@ -124,6 +124,13 @@ public class HomePresenter extends BasePresenter<HomeView> {
 
     // 更新 API 資料
     private void refreshData() {
+        // 檢查有沒有網路連線
+        if (!isNetworkConnected(context)) {
+            String msg = context.getString(R.string.home_snack_no_network);
+            getView().showSnackbar(msg);
+            return;
+        }
+
         // 顯示進度條
         getView().showProgress();
 
